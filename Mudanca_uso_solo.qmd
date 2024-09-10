@@ -1,0 +1,60 @@
+---
+title: "Impacto da Mudanca de Uso do Solo na Hidrologia"
+subtite: "Modelagem Hidrológica com Incerteza Paramétrica"
+format: revealjs
+---
+
+## Objetivos:
+
+-   Quantificar como a mudança no uso do solo afeta as vazões
+    -   Máximas
+    -   Médias
+    -   Mínimas
+
+## Como separar efeito do uso do solo dos efeitos do clima?  {.center}
+
+## Notação:
+
+- Mudança na vazão entre períodos 1 e 2:
+
+$$dQ = Q_2(\psi_2,\theta_2) - Q_1(\psi_1,\theta_1) = dQ_h + dQ_c$$
+- Contrafactual: quais teriam sido as vazões no período 2 caso não tivesse ocorrido alteração do solo
+
+$$Q_2(\psi_2,\theta_1)\, :\text{não observável}$$
+- Estimativa de $dQ_h$
+
+$$dQ_h = Q_2(\psi_2,\theta_2) - Q_2(\psi_2,\theta_1)$$
+
+## Contribuição do clima
+
+De posse de $dQ_h$, pode-se determianr a contribuição do clima na mudança:
+
+$$dQ_c = dQ - dQ_h$$
+
+## Estimativa de $Q_2(\psi_2,\theta_1)$
+
+- Peça-chave no processo
+- Quantidade não observável
+- Utilizamos modelo hidrológico para a estimativa
+
+## Estratégia geral
+
+- Calibra modelo para período 1
+$$Q_1^m(\psi_1,\hat{\theta_1})$$
+
+- Gera o contrafactual usando o modelo
+$$Q_2^m(\psi_2,\hat{\theta_1})$$
+- Estima-se o $dQ_h$
+$$dQ_h = Q_2(\psi_2,\theta_2) - Q_2^m(\psi_2,\hat{\theta_1})$$
+
+## Modelos não são perfeitos
+
+Como incorporar as incertezas do modelo nessas estimativas?
+
+- Calibração multiobjetivo - MOCOM ($NSE,\,NSE_log,\,\Delta V$)
+
+- Conjunto de 30 soluções na frente de Pareto
+
+- Avaliação dos resíduos na calibração e nos períodos de contrafacual (30 séries)
+
+- Mudança avaliada do ponto de vista estatístico (teste de Mann-Whitney)
